@@ -6,6 +6,9 @@ import {ImageFormatSetting} from "./data.image-format-type";
 
 const fs = require('fs');
 
+/**
+ * 画像変換機能を備えたユーティリティークラスです。
+ */
 export class Converter {
 
   private progress:number;

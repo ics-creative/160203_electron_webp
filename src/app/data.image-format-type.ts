@@ -1,15 +1,24 @@
+/**
+ * 画像フォーマットを示す定数のクラスです。
+ */
 export class ImageFormatType {
   static WEBP:string = "image/webp";
   static JPEG:string = "image/jpeg";
   static PNG:string = "image/png";
 }
 
+/**
+ * 画像フォーマットを示す Enum です。
+ */
 export enum ImageFormatEnum {
   WEBP,
   JPEG,
   PNG,
 }
 
+/**
+ * 画像の書き出し設定を示すクラスです。
+ */
 export class ImageFormatSetting {
   public format:string = ImageFormatType.WEBP;
   public quality:number = 80;

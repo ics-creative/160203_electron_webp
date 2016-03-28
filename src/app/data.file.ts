@@ -16,6 +16,9 @@ export class FileData {
   }
 }
 
+/**
+ * ファイルのバリューオブジェクトです。
+ */
 export class FileSaveData {
 
   constructor(public inputFile:FileData, public outputFile:FileData) {

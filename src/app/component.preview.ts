@@ -22,6 +22,9 @@ import {EventEmitter} from "angular2/core";
   events: ["clickConvert"]
 })
 
+/**
+ * プレビューを行うコンポーネントです。
+ */
 export class PreviewComponent implements AfterViewInit {
   private url:string;
   private clickConvert:EventEmitter<string> = new EventEmitter();

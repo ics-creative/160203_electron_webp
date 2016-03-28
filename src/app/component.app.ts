@@ -24,6 +24,9 @@ const fs = require('fs');
   `],
   directives: [PreviewComponent, SaveModal, SaveModalMulti]
 })
+/**
+ * アプリケーションのドキュメントクラスです。
+ */
 export class AppComponent {
   private files:FileData[];
   private selectedFile:string;
@@ -33,19 +36,19 @@ export class AppComponent {
     // ドラッグ&ドロップの動作を阻止する
     // -------------------------------
     document.addEventListener("dragover", (event:DragEvent)=> {
-      this.handleDragOver(event);
+      this._handleDragOver(event);
     });
     document.addEventListener("drop", (event:DragEvent)=> {
-      this.handleDrop(event);
+      this._handleDrop(event);
     });
 
   }
 
-  private handleDragOver(event:DragEvent) {
+  private _handleDragOver(event:DragEvent) {
     event.preventDefault();
   }
 
-  private handleDrop(event:DragEvent) {
+  private _handleDrop(event:DragEvent) {
     event.preventDefault();
 
     const files = <FileList> event.dataTransfer.files;
@@ -58,7 +61,7 @@ export class AppComponent {
   }
 
   /**
-   * 読み込みするためのファイルを開く
+   * 読み込みするためのファイルを開きます。
    */
   private loadFiles():void {
     var win = browserWindow.getFocusedWindow();
@@ -86,6 +89,10 @@ export class AppComponent {
     }, 1000);
   }
 
+  /**
+   * ファイルのリストを更新します。
+   * @param filenames
+   */
   private updateFiles(filenames:string[]) {
     let files = [];
     for (let i = 0; i < filenames.length; i++) {

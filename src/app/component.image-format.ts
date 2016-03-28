@@ -36,6 +36,9 @@ import {ImageFormatSetting} from "./data.image-format-type";
   inputs: ["setting"]
 })
 
+/**
+ * 画像フォーマットの設定を行うコンポーネントです。
+ */
 export class ImageFormatComponent {
 
   private setting:ImageFormatSetting;

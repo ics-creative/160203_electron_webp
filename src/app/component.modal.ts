@@ -42,6 +42,9 @@ const fs = require('fs');
   directives: [ImageFormatComponent]
 })
 
+/**
+ * 画像の書き出し設定を行うモダールコンポーネントです。
+ */
 export class SaveModal {
   private selectedFile:string;
   private setting:ImageFormatSetting = new ImageFormatSetting();

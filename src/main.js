@@ -13,7 +13,7 @@ app.on('window-all-closed', () => {
 // アプリケーションの初期化が完了したら呼び出されます。
 app.on('ready', () => {
   // メインウィンドウを作成します。
-  mainWindow = new BrowserWindow({width: 600, height: 400});
+  mainWindow = new BrowserWindow({width: 1000, height: 700});
 
   // メインウィンドウに表示するURLを指定します。
   mainWindow.loadURL('file://' + __dirname + '/index.html');

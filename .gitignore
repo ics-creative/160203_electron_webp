@@ -2,3 +2,4 @@
 src/node_modules
 *.map
 src/app/*.js
+src/npm-debug.log

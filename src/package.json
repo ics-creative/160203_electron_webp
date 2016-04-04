@@ -2,6 +2,9 @@
   "name": "FirstApp",
   "version": "0.1.0",
   "main": "main.js",
+  "scripts" : {
+    "release": "node release.js"
+  },
   "devDependencies": {
     "bootstrap": "^4.0.0-alpha.2",
     "jquery": "^2.2.0",

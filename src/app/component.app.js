@@ -1,4 +1,6 @@
-System.register(['angular2/core', "./data.file", "./component.preview", "./component.modal", "./component.modal-multi"], function(exports_1) {
+System.register(['angular2/core', "./data.file", "./component.preview", "./component.modal", "./component.modal-multi"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -28,23 +30,35 @@ System.register(['angular2/core', "./data.file", "./component.preview", "./compo
                 component_modal_multi_1 = component_modal_multi_1_1;
             }],
         execute: function() {
-            "use strict";
             remote = require('remote');
             dialog = remote.require('dialog');
             browserWindow = remote.require('browser-window');
             fs = require('fs');
-            AppComponent = (function () {
-                function AppComponent() {
+            let AppComponent = class AppComponent {
+                constructor() {
+                    document.addEventListener("dragover", (event) => {
+                        this._handleDragOver(event);
+                    });
+                    document.addEventListener("drop", (event) => {
+                        this._handleDrop(event);
+                    });
                 }
-                /**
-                 * 読み込みするためのファイルを開く
-                 */
-                AppComponent.prototype.loadFiles = function () {
-                    var _this = this;
+                _handleDragOver(event) {
+                    event.preventDefault();
+                }
+                _handleDrop(event) {
+                    event.preventDefault();
+                    const files = event.dataTransfer.files;
+                    const filenames = [];
+                    for (let i = 0; i < files.length; i++) {
+                        let file = files[i];
+                        filenames.push(file["path"]);
+                    }
+                    this.updateFiles(filenames);
+                }
+                loadFiles() {
                     var win = browserWindow.getFocusedWindow();
-                    dialog.showOpenDialog(win, 
-                    // どんなダイアログを出すかを指定するプロパティ
-                    {
+                    dialog.showOpenDialog(win, {
                         properties: ["openFile", "multiSelections"],
                         filters: [
                             {
@@ -52,43 +66,42 @@ System.register(['angular2/core', "./data.file", "./component.preview", "./compo
                                 extensions: ["png", "gif", "jpeg", "jpg", "svg", "webp"]
                             }
                         ]
-                    }, 
-                    // [ファイル選択]ダイアログが閉じられた後のコールバック関数
-                    function (filenames) {
-                        _this.updateFiles(filenames);
+                    }, (filenames) => {
+                        this.updateFiles(filenames);
                     });
-                    // バインディングのトリガー・・・
-                    setInterval(function () {
-                        _this.files;
+                    setInterval(() => {
+                        this.files;
                     }, 1000);
-                };
-                AppComponent.prototype.updateFiles = function (filenames) {
-                    var files = [];
-                    for (var i = 0; i < filenames.length; i++) {
+                }
+                updateFiles(filenames) {
+                    let files = [];
+                    for (let i = 0; i < filenames.length; i++) {
                         files.push(new data_file_1.FileData(filenames[i]));
                     }
                     this.files = files;
-                };
-                AppComponent.prototype.saveFiles = function () {
+                }
+                saveFiles() {
                     $("#myModalMulti").modal();
-                };
-                AppComponent.prototype.openSaveDialog = function (event) {
+                }
+                openSaveDialog(event) {
                     this.selectedFile = event;
                     $("#myModal").modal();
-                };
-                AppComponent = __decorate([
-                    core_1.Component({
-                        selector: 'my-app',
-                        templateUrl: "app-html/component.app.html",
-                        styles: ["\n    .my-card-holder {\n      padding : 70px 0 70px;\n    }\n  "],
-                        directives: [component_preview_1.PreviewComponent, component_modal_1.SaveModal, component_modal_multi_1.SaveModalMulti]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], AppComponent);
-                return AppComponent;
-            })();
+                }
+            };
+            AppComponent = __decorate([
+                core_1.Component({
+                    selector: 'my-app',
+                    templateUrl: "app-html/component.app.html",
+                    styles: [`
+    .my-card-holder {
+      padding : 70px 0 70px;
+    }
+  `],
+                    directives: [component_preview_1.PreviewComponent, component_modal_1.SaveModal, component_modal_multi_1.SaveModalMulti]
+                }), 
+                __metadata('design:paramtypes', [])
+            ], AppComponent);
             exports_1("AppComponent", AppComponent);
         }
     }
 });
-//# sourceMappingURL=component.app.js.map

@@ -7,8 +7,6 @@ import {FileSaveData} from "./data.file";
 import {ImageFormatEnum} from "./data.image-format-type";
 import {SaveModalMulti} from "./component.modal-multi";
 
-"use strict";
-
 const remote = require('remote');
 const dialog = remote.require('dialog');
 const browserWindow = remote.require('browser-window');

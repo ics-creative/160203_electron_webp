@@ -30,7 +30,7 @@ const fs = require('fs');
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-        <button type="button" class="btn btn-primary" (click)="showSaveDialog()" [disabled]="setting.format == null">保存する</button>
+        <button type="button" class="btn btn-primary" (click)="showSaveDialog()" [disabled]="setting.format == null">保存先を選択する</button>
       </div>
     </div>
   </div>
@@ -52,21 +52,22 @@ export class SaveModalMulti {
 
   }
 
-
   private showSaveDialog() {
 
     var win = browserWindow.getFocusedWindow();
 
     dialog.showOpenDialog(
-        win,
-        // どんなダイアログを出すかを指定するプロパティ
-        {
-          properties: ["openDirectory"]
-        },
-        // [ファイル選択]ダイアログが閉じられた後のコールバック関数
-        (dir:string) => {
+      win,
+      // どんなダイアログを出すかを指定するプロパティ
+      {
+        properties: ["openDirectory"]
+      },
+      // [ファイル選択]ダイアログが閉じられた後のコールバック関数
+      (dir:string) => {
+        if (dir) {
           this.saveFile(dir);
-        });
+        }
+      });
   }
 
   private saveFile(dir:string):void {

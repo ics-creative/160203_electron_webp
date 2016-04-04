@@ -1,4 +1,6 @@
-System.register(["angular2/core"], function(exports_1) {
+System.register(["angular2/core"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -18,34 +20,41 @@ System.register(["angular2/core"], function(exports_1) {
             }],
         execute: function() {
             "use strict";
-            PreviewComponent = (function () {
-                function PreviewComponent() {
+            let PreviewComponent = class PreviewComponent {
+                constructor() {
                     this.clickConvert = new core_2.EventEmitter();
                 }
-                PreviewComponent.prototype.ngAfterViewInit = function () {
-                };
-                PreviewComponent.prototype.getFileName = function () {
-                    var urlArr = this.url.split("/");
-                    var fileName = urlArr.pop();
+                ngAfterViewInit() {
+                }
+                getFileName() {
+                    let urlArr = this.url.split("/");
+                    let fileName = urlArr.pop();
                     return fileName;
-                };
-                PreviewComponent.prototype.handleSaveClick = function () {
+                }
+                handleSaveClick() {
                     this.clickConvert.emit(this.url);
-                };
-                PreviewComponent = __decorate([
-                    core_1.Component({
-                        selector: "preview",
-                        template: "\n  <div class=\"card\">\n  <img class=\"card-img-top img-fluid\" data-src=\"{{url}}\" alt=\"Card image cap\">\n  <div class=\"card-block\">\n    <p class=\"card-text\"><small>{{getFileName()}}</small></p>\n    <a href=\"#\" class=\"btn btn-secondary btn-sm\" (click)=\"handleSaveClick($event)\">\u5909\u63DB\u3059\u308B</a>\n  </div>\n</div>\n",
-                        styles: ["\n  "],
-                        inputs: ["url"],
-                        events: ["clickConvert"]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], PreviewComponent);
-                return PreviewComponent;
-            })();
+                }
+            };
+            PreviewComponent = __decorate([
+                core_1.Component({
+                    selector: "preview",
+                    template: `
+  <div class="card">
+  <img class="card-img-top img-fluid" data-src="{{url}}" alt="Card image cap">
+  <div class="card-block">
+    <p class="card-text"><small>{{getFileName()}}</small></p>
+    <a href="#" class="btn btn-secondary btn-sm" (click)="handleSaveClick($event)">変換する</a>
+  </div>
+</div>
+`,
+                    styles: [`
+  `],
+                    inputs: ["url"],
+                    events: ["clickConvert"]
+                }), 
+                __metadata('design:paramtypes', [])
+            ], PreviewComponent);
             exports_1("PreviewComponent", PreviewComponent);
         }
     }
 });
-//# sourceMappingURL=component.preview.js.map

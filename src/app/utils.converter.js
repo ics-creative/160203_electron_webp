@@ -1,4 +1,6 @@
-System.register(["./data.image-format-type"], function(exports_1) {
+System.register(["./data.image-format-type"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var data_image_format_type_1;
     var fs, Converter;
     return {
@@ -8,30 +10,29 @@ System.register(["./data.image-format-type"], function(exports_1) {
             }],
         execute: function() {
             fs = require('fs');
-            Converter = (function () {
-                function Converter(files) {
+            class Converter {
+                constructor(files) {
                     this.files = files;
                 }
-                Converter.prototype.convert = function (setting) {
-                    var _this = this;
-                    var base64s = [];
-                    var promises = [];
+                convert(setting) {
+                    const base64s = [];
+                    const promises = [];
                     for (var i = 0; i < this.files.length; i++) {
                         console.log(this.files[i]);
-                        var promise = new Promise(function (resolve) {
-                            var canvas = document.createElement("canvas");
-                            var image = document.createElement("img");
-                            var fileInput = _this.files[i].inputFile;
-                            var fileOutput = _this.files[i].outputFile;
-                            var url = fileInput.url;
-                            image.onload = function () {
+                        let promise = new Promise((resolve) => {
+                            let canvas = document.createElement("canvas");
+                            let image = document.createElement("img");
+                            let fileInput = this.files[i].inputFile;
+                            let fileOutput = this.files[i].outputFile;
+                            let url = fileInput.url;
+                            image.onload = () => {
                                 canvas.width = image.width;
                                 canvas.height = image.height;
-                                var context = canvas.getContext("2d");
+                                let context = canvas.getContext("2d");
                                 context.drawImage(image, 0, 0);
-                                var data;
-                                var dataUrl;
-                                var extention;
+                                let data;
+                                let dataUrl;
+                                let extention;
                                 switch (setting.getEnum()) {
                                     case data_image_format_type_1.ImageFormatEnum.WEBP:
                                         data = canvas.toDataURL(setting.format, setting.quality / 100);
@@ -59,33 +60,30 @@ System.register(["./data.image-format-type"], function(exports_1) {
                             image.src = fileInput.url;
                         });
                         promises.push(promise);
-                        var prog = new Promise(function (resolve) {
-                            var count = i;
-                            _this.progress += count / _this.files.length;
-                            if (_this.onProgress != null) {
-                                _this.onProgress(_this.progress);
+                        let prog = new Promise((resolve) => {
+                            let count = i;
+                            this.progress += count / this.files.length;
+                            if (this.onProgress != null) {
+                                this.onProgress(this.progress);
                             }
-                            // 画面ブロックの回避
-                            setTimeout(function () {
+                            setTimeout(() => {
                                 resolve();
-                            }, 50);
+                            }, 16);
                         });
                         promises.push(prog);
                     }
                     Promise
                         .race(promises)
-                        .then(function (results) {
+                        .then((results) => {
                         console.log("finish!!!");
                         console.log(base64s);
-                        if (_this.onComplete != null) {
-                            _this.onComplete();
+                        if (this.onComplete != null) {
+                            this.onComplete();
                         }
                     });
-                };
-                return Converter;
-            })();
+                }
+            }
             exports_1("Converter", Converter);
         }
     }
 });
-//# sourceMappingURL=utils.converter.js.map

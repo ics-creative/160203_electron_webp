@@ -1,4 +1,6 @@
-System.register(["angular2/core", "./utils.converter", "./data.file", "./data.image-format-type", "./component.image-format"], function(exports_1) {
+System.register(["angular2/core", "./utils.converter", "./data.file", "./data.image-format-type", "./component.image-format"], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var __decorate = (this && this.__decorate) || function (decorators, target, key, desc) {
         var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
         if (typeof Reflect === "object" && typeof Reflect.decorate === "function") r = Reflect.decorate(decorators, target, key, desc);
@@ -29,63 +31,77 @@ System.register(["angular2/core", "./utils.converter", "./data.file", "./data.im
                 component_image_format_1 = component_image_format_1_1;
             }],
         execute: function() {
-            "use strict";
             remote = require('remote');
             dialog = remote.require('dialog');
             browserWindow = remote.require('browser-window');
             fs = require('fs');
-            SaveModalMulti = (function () {
-                function SaveModalMulti() {
+            let SaveModalMulti = class SaveModalMulti {
+                constructor() {
                     this.setting = new data_image_format_type_1.ImageFormatSetting();
                 }
-                SaveModalMulti.prototype.showSaveDialog = function () {
-                    var _this = this;
+                showSaveDialog() {
                     var win = browserWindow.getFocusedWindow();
-                    dialog.showOpenDialog(win, 
-                    // どんなダイアログを出すかを指定するプロパティ
-                    {
+                    dialog.showOpenDialog(win, {
                         properties: ["openDirectory"]
-                    }, 
-                    // [ファイル選択]ダイアログが閉じられた後のコールバック関数
-                    function (dir) {
-                        _this.saveFile(dir);
+                    }, (dir) => {
+                        if (dir) {
+                            this.saveFile(dir);
+                        }
                     });
-                };
-                SaveModalMulti.prototype.saveFile = function (dir) {
-                    var _this = this;
+                }
+                saveFile(dir) {
                     this.progress = 0;
-                    var taskFiles = [];
-                    for (var i = 0; i < this.files.length; i++) {
-                        var fileInput = this.files[i];
-                        var urlOutput = dir + "/" + fileInput.fileNameWithoutExtension + "." + this.setting.getExtention();
-                        var fileOutput = new data_file_1.FileData(urlOutput);
-                        var file = new data_file_2.FileSaveData(fileInput, fileOutput);
+                    let taskFiles = [];
+                    for (let i = 0; i < this.files.length; i++) {
+                        let fileInput = this.files[i];
+                        let urlOutput = dir + "/" + fileInput.fileNameWithoutExtension + "." + this.setting.getExtention();
+                        let fileOutput = new data_file_1.FileData(urlOutput);
+                        let file = new data_file_2.FileSaveData(fileInput, fileOutput);
                         taskFiles.push(file);
                     }
-                    var converter = new utils_converter_1.Converter(taskFiles);
-                    converter.onProgress = function (progress) {
-                        _this.progress = Math.round(progress * 100);
+                    let converter = new utils_converter_1.Converter(taskFiles);
+                    converter.onProgress = (progress) => {
+                        this.progress = Math.round(progress * 100);
                     };
-                    converter.onComplete = function () {
-                        _this.progress = 1.0 * 100;
+                    converter.onComplete = () => {
+                        this.progress = 1.0 * 100;
                         alert("保存しました。");
                         $("#myModalMulti").modal("hide");
                     };
                     converter.convert(this.setting);
-                };
-                SaveModalMulti = __decorate([
-                    core_1.Component({
-                        selector: "modal-save-multi",
-                        template: "\n<div class=\"modal fade\" id=\"myModalMulti\" tabindex=\"-1\" role=\"dialog\" aria-labelledby=\"myModalLabel\" aria-hidden=\"true\">\n  <div class=\"modal-dialog\" role=\"document\">\n    <div class=\"modal-content\">\n      <div class=\"modal-header\">\n        <button type=\"button\" class=\"close\" data-dismiss=\"modal\" aria-label=\"Close\">\n          <span aria-hidden=\"true\">&times;</span>\n        </button>\n        <h4 class=\"modal-title\" id=\"myModalLabel\">Modal title</h4>\n      </div>\n      <div class=\"modal-body\">\n        <setting-image-format [setting]=\"setting\"></setting-image-format>\n        <progress class=\"progress\" value=\"{{progress}}\" max=\"100\">{{progress}}%</progress>\n      </div>\n      <div class=\"modal-footer\">\n        <button type=\"button\" class=\"btn btn-secondary\" data-dismiss=\"modal\">\u9589\u3058\u308B</button>\n        <button type=\"button\" class=\"btn btn-primary\" (click)=\"showSaveDialog()\" [disabled]=\"setting.format == null\">\u4FDD\u5B58\u3059\u308B</button>\n      </div>\n    </div>\n  </div>\n</div>\n",
-                        inputs: ["files"],
-                        directives: [component_image_format_1.ImageFormatComponent]
-                    }), 
-                    __metadata('design:paramtypes', [])
-                ], SaveModalMulti);
-                return SaveModalMulti;
-            })();
+                }
+            };
+            SaveModalMulti = __decorate([
+                core_1.Component({
+                    selector: "modal-save-multi",
+                    template: `
+<div class="modal fade" id="myModalMulti" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="myModalLabel">書き出し形式</h4>
+      </div>
+      <div class="modal-body">
+        <setting-image-format [setting]="setting"></setting-image-format>
+        <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+        <button type="button" class="btn btn-primary" (click)="showSaveDialog()" [disabled]="setting.format == null">保存先を選択する</button>
+      </div>
+    </div>
+  </div>
+</div>
+`,
+                    inputs: ["files"],
+                    directives: [component_image_format_1.ImageFormatComponent]
+                }), 
+                __metadata('design:paramtypes', [])
+            ], SaveModalMulti);
             exports_1("SaveModalMulti", SaveModalMulti);
         }
     }
 });
-//# sourceMappingURL=component.modal-multi.js.map

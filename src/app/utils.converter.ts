@@ -84,7 +84,7 @@ export class Converter {
         // 画面ブロックの回避
         setTimeout(()=> {
           resolve();
-        }, 50);
+        }, 16);
 
       });
 

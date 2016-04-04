@@ -1,4 +1,6 @@
-System.register(['angular2/platform/browser', './component.app'], function(exports_1) {
+System.register(['angular2/platform/browser', './component.app'], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var browser_1, component_app_1;
     return {
         setters:[
@@ -13,4 +15,3 @@ System.register(['angular2/platform/browser', './component.app'], function(expor
         }
     }
 });
-//# sourceMappingURL=main.js.map

@@ -1,16 +1,15 @@
-System.register([], function(exports_1) {
+System.register([], function(exports_1, context_1) {
+    "use strict";
+    var __moduleName = context_1 && context_1.id;
     var ImageFormatType, ImageFormatEnum, ImageFormatSetting;
     return {
         setters:[],
         execute: function() {
-            ImageFormatType = (function () {
-                function ImageFormatType() {
-                }
-                ImageFormatType.WEBP = "image/webp";
-                ImageFormatType.JPEG = "image/jpeg";
-                ImageFormatType.PNG = "image/png";
-                return ImageFormatType;
-            })();
+            class ImageFormatType {
+            }
+            ImageFormatType.WEBP = "image/webp";
+            ImageFormatType.JPEG = "image/jpeg";
+            ImageFormatType.PNG = "image/png";
             exports_1("ImageFormatType", ImageFormatType);
             (function (ImageFormatEnum) {
                 ImageFormatEnum[ImageFormatEnum["WEBP"] = 0] = "WEBP";
@@ -18,13 +17,13 @@ System.register([], function(exports_1) {
                 ImageFormatEnum[ImageFormatEnum["PNG"] = 2] = "PNG";
             })(ImageFormatEnum || (ImageFormatEnum = {}));
             exports_1("ImageFormatEnum", ImageFormatEnum);
-            ImageFormatSetting = (function () {
-                function ImageFormatSetting() {
+            class ImageFormatSetting {
+                constructor() {
                     this.format = ImageFormatType.WEBP;
                     this.quality = 80;
                 }
-                ImageFormatSetting.prototype.getEnum = function () {
-                    var formatEnum;
+                getEnum() {
+                    let formatEnum;
                     switch (this.format) {
                         case ImageFormatType.WEBP:
                             formatEnum = ImageFormatEnum.WEBP;
@@ -38,9 +37,9 @@ System.register([], function(exports_1) {
                             break;
                     }
                     return formatEnum;
-                };
-                ImageFormatSetting.prototype.getExtention = function () {
-                    var formatExtention;
+                }
+                getExtention() {
+                    let formatExtention;
                     switch (this.format) {
                         case ImageFormatType.WEBP:
                             formatExtention = "webp";
@@ -54,11 +53,9 @@ System.register([], function(exports_1) {
                             break;
                     }
                     return formatExtention;
-                };
-                return ImageFormatSetting;
-            })();
+                }
+            }
             exports_1("ImageFormatSetting", ImageFormatSetting);
         }
     }
 });
-//# sourceMappingURL=data.image-format-type.js.map

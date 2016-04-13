@@ -95,6 +95,7 @@ System.register(["angular2/core", "./utils.converter", "./data.file", "./data.im
     </div>
   </div>
 </div>
+
 `,
                     inputs: ["files"],
                     directives: [component_image_format_1.ImageFormatComponent]

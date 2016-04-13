@@ -10,7 +10,7 @@ System.register(["angular2/core", "./utils.converter", "./data.file", "./data.im
     var __metadata = (this && this.__metadata) || function (k, v) {
         if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
     };
-    var core_1, utils_converter_1, data_file_1, data_file_2, data_image_format_type_1, component_image_format_1;
+    var core_1, utils_converter_1, data_file_1, data_image_format_type_1, component_image_format_1;
     var remote, dialog, browserWindow, fs, SaveModal;
     return {
         setters:[
@@ -22,7 +22,6 @@ System.register(["angular2/core", "./utils.converter", "./data.file", "./data.im
             },
             function (data_file_1_1) {
                 data_file_1 = data_file_1_1;
-                data_file_2 = data_file_1_1;
             },
             function (data_image_format_type_1_1) {
                 data_image_format_type_1 = data_image_format_type_1_1;
@@ -56,7 +55,7 @@ System.register(["angular2/core", "./utils.converter", "./data.file", "./data.im
                 }
                 saveFile(saveFileUrl) {
                     console.log(saveFileUrl);
-                    let file = new data_file_2.FileSaveData(new data_file_1.FileData(this.selectedFile), new data_file_1.FileData(saveFileUrl));
+                    let file = new data_file_1.FileSaveData(new data_file_1.FileData(this.selectedFile), new data_file_1.FileData(saveFileUrl));
                     let converter = new utils_converter_1.Converter([file]);
                     converter.onProgress = (progress) => {
                         console.log(progress);

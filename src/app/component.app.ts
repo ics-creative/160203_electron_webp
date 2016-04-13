@@ -1,10 +1,7 @@
-import {Component} from 'angular2/core';
+import {Component} from "angular2/core";
 import {FileData} from "./data.file";
 import {PreviewComponent} from "./component.preview";
 import {SaveModal} from "./component.modal";
-import {Converter} from "./utils.converter";
-import {FileSaveData} from "./data.file";
-import {ImageFormatEnum} from "./data.image-format-type";
 import {SaveModalMulti} from "./component.modal-multi";
 
 const remote = require('remote');
@@ -39,7 +36,6 @@ export class AppComponent {
     document.addEventListener("drop", (event:DragEvent)=> {
       this._handleDrop(event);
     });
-
   }
 
   private _handleDragOver(event:DragEvent) {

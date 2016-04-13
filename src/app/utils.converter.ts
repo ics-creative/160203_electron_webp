@@ -85,7 +85,6 @@ export class Converter {
         setTimeout(()=> {
           resolve();
         }, 16);
-
       });
 
       promises.push(prog);
@@ -101,6 +100,5 @@ export class Converter {
             this.onComplete();
           }
         });
-
   }
 }

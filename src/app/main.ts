@@ -3,4 +3,3 @@ import {AppComponent} from './component.app'
 
 // 起動コードです。
 bootstrap(AppComponent);
-

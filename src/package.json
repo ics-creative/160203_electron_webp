@@ -1,12 +1,13 @@
 {
-  "name": "FirstApp",
+  "name": "WebP-Converter",
   "version": "0.1.0",
   "main": "main.js",
-  "scripts" : {
-    "release": "node release.js"
+  "scripts": {
+    "release": "node release"
   },
   "devDependencies": {
     "bootstrap": "^4.0.0-alpha.2",
+    "electron-packager": "^6.0.2",
     "jquery": "^2.2.0",
     "typescript": "^1.7.5"
   },

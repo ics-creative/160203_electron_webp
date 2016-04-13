@@ -1,9 +1,6 @@
 import {Component} from "angular2/core";
 import {Converter} from "./utils.converter";
-import {FileData} from "./data.file";
-import {ImageFormatEnum} from "./data.image-format-type";
-import {ImageFormatType} from "./data.image-format-type";
-import {FileSaveData} from "./data.file";
+import {FileData, FileSaveData} from "./data.file";
 import {ImageFormatSetting} from "./data.image-format-type";
 import {ImageFormatComponent} from "./component.image-format";
 "use strict";
@@ -74,6 +71,7 @@ export class SaveModal {
             this.saveFile(filenames);
           }
         });
+
 
 
   }

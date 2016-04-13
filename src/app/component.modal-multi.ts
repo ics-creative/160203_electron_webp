@@ -35,6 +35,7 @@ const fs = require('fs');
     </div>
   </div>
 </div>
+
 `,
   inputs: ["files"],
   directives: [ImageFormatComponent]

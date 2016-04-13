@@ -9,7 +9,7 @@ export class FileData {
     const fileName = dirArr.pop();
     this.fileName = fileName;
     this.directory = dirArr.join("/");
-
+    
     const fileNameArr = fileName.split(".");
     this.extention = fileNameArr.pop();
     this.fileNameWithoutExtension = fileNameArr.join(".");

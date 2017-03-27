@@ -22,6 +22,7 @@ import {SaveModalMulti} from './component.modal-multi';
     FormsModule,
     HttpModule
   ],
+
   providers: [],
   bootstrap: [AppComponent]
 })

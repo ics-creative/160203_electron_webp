@@ -29,6 +29,7 @@
   "devDependencies": {
     "@angular/cli": "1.0.0",
     "@angular/compiler-cli": "^4.0.0",
+    "@types/electron": "^1.4.34",
     "@types/jasmine": "2.5.38",
     "@types/jquery": "^2.0.41",
     "@types/node": "~6.0.60",
@@ -46,6 +47,7 @@
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
-    "typescript": "~2.2.0"
+    "typescript": "~2.2.0",
+    "your-app": "file:electron"
   }
 }

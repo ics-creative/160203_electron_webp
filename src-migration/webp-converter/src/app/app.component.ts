@@ -1,12 +1,18 @@
 import {Component} from '@angular/core';
 import {FileData} from './data.file';
 
+
+// import {electron} from 'electron';
+// import * as electron from 'electron';
+// import * as fs from 'fs';
+
 // const electron = require('electron');
 // const app = electron.app;
 // const remote = require('remote');
 // const dialog = remote.require('dialog');
 // const browserWindow = electron.BrowserWindow;
 // const fs = require('fs');
+
 
 @Component({
   selector: 'app-root',
@@ -53,8 +59,19 @@ export class AppComponent {
    * 読み込みするためのファイルを開きます。
    */
   private loadFiles(): void {
-    /*
-    var win = browserWindow.getFocusedWindow();
+
+    console.log(electron);
+    console.log(electron.BrowserWindow);
+    let win;
+    // const win = electron.BrowserWindow.getFocusedWindow();
+    console.log(remote)
+    var BrowserWindow = remote.require('browser-window');
+    var dialog = remote.require('dialog');
+
+
+    console.log(BrowserWindow)
+
+    console.log(dialog)
 
     dialog.showOpenDialog(
       win,
@@ -77,7 +94,6 @@ export class AppComponent {
     setInterval(() => {
       this.files;
     }, 1000);
-    */
   }
 
   /**
@@ -94,11 +110,11 @@ export class AppComponent {
   }
 
   private saveFiles(): void {
-    // jQuery('#myModalMulti').modal();
+    jQuery('#myModalMulti').modal();
   }
 
   private openSaveDialog(event): void {
     this.selectedFile = event;
-    // jQuery('#myModal').modal();
+    jQuery('#myModal').modal();
   }
 }

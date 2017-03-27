@@ -13,15 +13,3 @@ https://youtu.be/eAbopb5bvas
 
 [開発者のTwitter](https://twitter.com/clockmaker)をチェックくださいませ。
 
-## 開発者向け情報
-
-ソースファイルから編集する場合は、`src`フォルダーを参照ください。ビルド手順は`src`フォルダー内の`ReadMe.md`ファイルに記載しています。
-
-[ビルド手順](./src/ReadMe.md)
-
-
-## ビルドコマンド
-
-```
-electron-packager ./src main --platform=darwin,win32 --arch=x64 --version=0.36.1
-```

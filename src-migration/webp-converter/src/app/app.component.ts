@@ -55,21 +55,23 @@ export class AppComponent {
     this.updateFiles(<string[]> filenames);
   }
 
+
+
+
   /**
    * 読み込みするためのファイルを開きます。
    */
   private loadFiles(): void {
 
     console.log(electron);
-    console.log(electron.BrowserWindow);
     let win;
     // const win = electron.BrowserWindow.getFocusedWindow();
     console.log(remote)
-    var BrowserWindow = remote.require('browser-window');
-    var dialog = remote.require('dialog');
+    // var BrowserWindow = remote.require('browser-window');
+    var dialog = electron.remote;
 
 
-    console.log(BrowserWindow)
+    // console.log(BrowserWindow)
 
     console.log(dialog)
 

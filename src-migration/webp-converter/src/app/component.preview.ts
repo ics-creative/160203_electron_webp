@@ -13,6 +13,7 @@ import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/co
         <a href="#" class="btn btn-secondary btn-sm" (click)="handleSaveClick($event)">変換する</a>
       </div>
     </div>
+    
   `,
   styles: [`
   `]

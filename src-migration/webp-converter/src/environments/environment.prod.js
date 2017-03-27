@@ -1,0 +1,3 @@
+exports.environment = {
+    production: true
+};

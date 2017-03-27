@@ -4,3 +4,4 @@ src/node_modules
 src/app/*.js
 src/npm-debug.log
 .DS_Store
+/src-migration/webp-converter/src/*.js

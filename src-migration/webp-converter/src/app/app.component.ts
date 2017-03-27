@@ -1,12 +1,12 @@
 import {Component} from '@angular/core';
 import {FileData} from './data.file';
 
-/*
-const remote = require('remote');
-const dialog = remote.require('dialog');
-const browserWindow = remote.require('browser-window');
-const fs = require('fs');
-*/
+// const electron = require('electron');
+// const app = electron.app;
+// const remote = require('remote');
+// const dialog = remote.require('dialog');
+// const browserWindow = electron.BrowserWindow;
+// const fs = require('fs');
 
 @Component({
   selector: 'app-root',
@@ -14,7 +14,6 @@ const fs = require('fs');
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app works!';
 
   private files: FileData[];
   private selectedFile: string;
@@ -36,6 +35,7 @@ export class AppComponent {
   private _handleDragOver(event: DragEvent) {
     event.preventDefault();
   }
+
 
   private _handleDrop(event: DragEvent) {
     event.preventDefault();

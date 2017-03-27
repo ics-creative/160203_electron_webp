@@ -1,7 +1,4 @@
-import {Component} from "angular2/core";
-import {AfterViewInit} from "angular2/core";
-import {ViewChild} from "angular2/core";
-import {EventEmitter} from "angular2/core";
+import {AfterViewInit, Component, EventEmitter} from 'angular2/core';
 
 "use strict";
 

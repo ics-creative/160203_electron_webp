@@ -1,8 +1,8 @@
-import {Component} from "angular2/core";
-import {FileData} from "./data.file";
-import {PreviewComponent} from "./component.preview";
-import {SaveModal} from "./component.modal";
-import {SaveModalMulti} from "./component.modal-multi";
+import {Component} from 'angular2/core';
+import {FileData} from './data.file';
+import {PreviewComponent} from './component.preview';
+import {SaveModal} from './component.modal';
+import {SaveModalMulti} from './component.modal-multi';
 
 const remote = require('remote');
 const dialog = remote.require('dialog');

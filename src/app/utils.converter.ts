@@ -1,8 +1,5 @@
-import {FileData} from "./data.file";
-import {ImageFormatEnum} from "./data.image-format-type";
-import {ImageFormatType} from "./data.image-format-type";
-import {FileSaveData} from "./data.file";
-import {ImageFormatSetting} from "./data.image-format-type";
+import {FileSaveData} from './data.file';
+import {ImageFormatEnum, ImageFormatSetting} from './data.image-format-type';
 
 const fs = require('fs');
 

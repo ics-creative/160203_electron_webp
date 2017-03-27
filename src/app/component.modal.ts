@@ -1,9 +1,9 @@
-import {Component} from "angular2/core";
-import {Converter} from "./utils.converter";
-import {FileData, FileSaveData} from "./data.file";
-import {ImageFormatSetting} from "./data.image-format-type";
-import {ImageFormatComponent} from "./component.image-format";
-"use strict";
+import {Component} from 'angular2/core';
+import {Converter} from './utils.converter';
+import {FileData, FileSaveData} from './data.file';
+import {ImageFormatSetting} from './data.image-format-type';
+import {ImageFormatComponent} from './component.image-format';
+
 
 const remote = require('remote');
 const dialog = remote.require('dialog');

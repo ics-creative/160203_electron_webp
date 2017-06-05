@@ -1,24 +1,12 @@
 import {Component} from '@angular/core';
 import {FileData} from './data.file';
 
-
-// import {electron} from 'electron';
-// import * as electron from 'electron';
-// import * as fs from 'fs';
-
-// const electron = require('electron');
-// const app = electron.app;
-// const remote = require('remote');
-// const dialog = remote.require('dialog');
-// const browserWindow = electron.BrowserWindow;
-// const fs = require('fs');
-
-
 @Component({
   selector   : 'app-root',
   templateUrl: './app.component.html',
   styleUrls  : ['./app.component.css']
 })
+
 export class AppComponent {
 
   private files: FileData[];
@@ -93,9 +81,9 @@ export class AppComponent {
       });
 
     // バインディングのトリガー・・・
-    setInterval(() => {
-      this.files;
-    }, 1000);
+    // setInterval(() => {
+    //   this.files;
+    // }, 1000);
   }
 
   /**

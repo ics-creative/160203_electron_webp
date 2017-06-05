@@ -16,7 +16,8 @@
     <div class="card-columns">
       <app-preview *ngFor="let file of files"
                url="{{file.url}}"
-               (clickConvert)="openSaveDialog($event)"></app-preview>
+               (clickConvert)="openSaveDialog($event)">
+      </app-preview>
     </div>
   </div>
 </div>

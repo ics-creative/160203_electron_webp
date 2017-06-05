@@ -15,9 +15,9 @@ import {FileData} from './data.file';
 
 
 @Component({
-  selector: 'app-root',
+  selector   : 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls  : ['./app.component.css']
 })
 export class AppComponent {
 
@@ -46,7 +46,7 @@ export class AppComponent {
   private _handleDrop(event: DragEvent) {
     event.preventDefault();
 
-    const files = <FileList> event.dataTransfer.files;
+    const files               = <FileList> event.dataTransfer.files;
     const filenames: string[] = [];
     for (let i = 0; i < files.length; i++) {
       const file = <File>files[i];
@@ -56,33 +56,33 @@ export class AppComponent {
   }
 
 
-
-
   /**
    * 読み込みするためのファイルを開きます。
    */
   private loadFiles(): void {
 
+    console.log('loadFiles');
     console.log(electron);
     let win;
     // const win = electron.BrowserWindow.getFocusedWindow();
-    console.log(remote)
     // var BrowserWindow = remote.require('browser-window');
-    var dialog = electron.remote;
+    let remote = electron.remote;
 
 
     // console.log(BrowserWindow)
 
-    console.log(dialog)
+    console.log(remote);
+    console.log('remote.dialog');
+    console.log(remote.dialog);
 
-    dialog.showOpenDialog(
+    remote.dialog.showOpenDialog(
       win,
       // どんなダイアログを出すかを指定するプロパティ
       {
         properties: ['openFile', 'multiSelections'],
-        filters: [
+        filters   : [
           {
-            name: 'Image Files',
+            name      : 'Image Files',
             extensions: ['png', 'gif', 'jpeg', 'jpg', 'svg', 'webp']
           }
         ]

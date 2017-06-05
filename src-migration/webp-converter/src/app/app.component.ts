@@ -63,10 +63,10 @@ export class AppComponent {
 
     console.log('loadFiles');
     console.log(electron);
-    let win;
+    let win = null;
     // const win = electron.BrowserWindow.getFocusedWindow();
     // var BrowserWindow = remote.require('browser-window');
-    let remote = electron.remote;
+    const remote = electron.remote;
 
 
     // console.log(BrowserWindow)

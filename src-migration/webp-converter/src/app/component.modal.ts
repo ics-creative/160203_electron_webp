@@ -11,7 +11,7 @@ const fs = require('fs');
 */
 
 @Component({
-  selector: 'modal-save',
+  selector: 'app-modal-save',
   template: `
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -25,7 +25,7 @@ const fs = require('fs');
           <div class="modal-body">
             <img src="{{selectedFile}}" class="img-fluid"/>
 
-            <setting-image-format [setting]="setting"></setting-image-format>
+            <app-setting-image-format [setting]="setting"></app-setting-image-format>
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>

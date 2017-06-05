@@ -2,7 +2,7 @@ import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/co
 
 
 @Component({
-  selector: 'preview',
+  selector: 'app-preview',
   template: `
     <div class="card">
       <img class="card-img-top img-fluid" data-src="{{url}}" alt="Card image cap">

@@ -11,7 +11,7 @@ import {Component, Input} from '@angular/core';
 // const fs = require('fs');
 
 @Component({
-  selector: 'modal-save-multi',
+  selector: 'app-modal-save-multi',
   template: `
     <div class="modal fade" id="myModalMulti" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
       <div class="modal-dialog" role="document">
@@ -23,7 +23,8 @@ import {Component, Input} from '@angular/core';
             <h4 class="modal-title" id="myModalLabel">書き出し形式</h4>
           </div>
           <div class="modal-body">
-            <setting-image-format [setting]="setting"></setting-image-format>
+            <app-setting-image-format [setting]="setting"></app-setting-image-format>
+            <app-setting-image-format [setting]="setting"></app-setting-image-format>
             <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
           </div>
           <div class="modal-footer">

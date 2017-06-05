@@ -1,7 +1,7 @@
 import {Component, Input} from '@angular/core';
 import {ImageFormatSetting} from './data.image-format-type';
 @Component({
-  selector: 'setting-image-format',
+  selector: 'app-setting-image-format',
   template: `
     <div class="radio">
       <label>

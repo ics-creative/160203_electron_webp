@@ -14,9 +14,9 @@
 <div class="my-card-holder">
   <div class="container-fluid">
     <div class="card-columns">
-      <preview *ngFor="let file of files"
+      <app-preview *ngFor="let file of files"
                url="{{file.url}}"
-               (clickConvert)="openSaveDialog($event)"></preview>
+               (clickConvert)="openSaveDialog($event)"></app-preview>
     </div>
   </div>
 </div>
@@ -27,5 +27,5 @@
   </a>
 </nav>
 
-<modal-save [selectedFile]="selectedFile"></modal-save>
-<modal-save-multi [files]="files"></modal-save-multi>
+<app-modal-save [selectedFile]="selectedFile"></app-modal-save>
+<app-modal-save-multi [files]="files"></app-modal-save-multi>

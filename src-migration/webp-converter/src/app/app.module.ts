@@ -3,7 +3,14 @@ import {NgModule} from '@angular/core';
 import {FormsModule} from '@angular/forms';
 import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {MdButtonModule, MdCheckboxModule} from '@angular/material';
+import {
+  MdButtonModule,
+  MdCheckboxModule,
+  MdToolbarModule,
+  MdCardModule,
+  MdGridListModule,
+  MdIconModule
+} from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {PreviewComponent} from './component.preview';
@@ -19,12 +26,12 @@ import {SaveModalMulti} from './component.modal-multi';
     SaveModal,
     SaveModalMulti
   ],
-  imports: [
+  imports     : [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MdButtonModule, MdCheckboxModule
+    MdButtonModule, MdCheckboxModule, MdToolbarModule, MdCardModule, MdGridListModule, MdIconModule
   ],
 
   providers: [],

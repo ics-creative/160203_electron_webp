@@ -4,24 +4,24 @@ import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/co
 @Component({
   selector: 'app-preview',
   template: `
-    <div class="card">
-      <img class="card-img-top img-fluid" 
-           data-src="{{url}}" 
-           alt="Card image cap" />
-      <div class="card-block">
-        <p class="card-text">
-          <small>{{getFileName()}}</small>
-        </p>
+    <md-card>
+      <img md-card-image
+           data-src="{{url}}"
+           alt="Card image cap"/>
+      
+      <md-card-content>
+        {{getFileName()}}
+      </md-card-content>
 
-        <button md-button>Flat button</button>
-        <button href="#" 
-           class="btn btn-secondary btn-sm" 
-           (click)="handleSaveClick($event)">変換する
+      <md-card-actions>
+        <button md-button
+                (click)="handleSaveClick($event)">
+          変換する
         </button>
-      </div>
-    </div>
+      </md-card-actions>
+    </md-card>
   `,
-  styles: [`
+  styles  : [`
   `]
   // events: ['clickConvert']
 })
@@ -37,7 +37,7 @@ export class PreviewComponent implements AfterViewInit {
   }
 
   private getFileName(): string {
-    const urlArr = this.url.split('/');
+    const urlArr   = this.url.split('/');
     const fileName = <string>urlArr.pop();
     return fileName;
   }

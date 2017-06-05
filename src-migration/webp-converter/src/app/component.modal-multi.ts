@@ -1,4 +1,3 @@
-
 import {Converter} from './utils.converter';
 import {FileData, FileSaveData} from './data.file';
 import {ImageFormatSetting} from './data.image-format-type';
@@ -12,31 +11,28 @@ import {Component, Input} from '@angular/core';
 
 @Component({
   selector: 'app-modal-save-multi',
-  template: `
-    <div class="modal fade" id="myModalMulti" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
-            <h4 class="modal-title" id="myModalLabel">書き出し形式</h4>
-          </div>
-          <div class="modal-body">
-            <app-setting-image-format [setting]="setting"></app-setting-image-format>
-            <app-setting-image-format [setting]="setting"></app-setting-image-format>
-            <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
-            <button type="button" class="btn btn-primary" (click)="showSaveDialog()" [disabled]="setting.format == null">
-              保存先を選択する
-            </button>
-          </div>
+  template: `    
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title" id="myModalLabel">書き出し形式</h4>
+        </div>
+        <div class="modal-body">
+          <app-setting-image-format [setting]="setting"></app-setting-image-format>
+          <app-setting-image-format [setting]="setting"></app-setting-image-format>
+          <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">閉じる</button>
+          <button type="button" class="btn btn-primary" (click)="showSaveDialog()" [disabled]="setting.format == null">
+            保存先を選択する
+          </button>
         </div>
       </div>
     </div>
-
   `
 })
 
@@ -44,7 +40,7 @@ import {Component, Input} from '@angular/core';
 /**
  * 画像の書き出し設定(複数ファイル)を行うモダールコンポーネントです。
  */
-export class SaveModalMulti {
+export class SaveModalMultiComponent {
   @Input() private files: FileData[];
   private setting: ImageFormatSetting = new ImageFormatSetting();
   private progress: number;

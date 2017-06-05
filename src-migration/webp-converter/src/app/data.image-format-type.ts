@@ -2,9 +2,9 @@
  * 画像フォーマットを示す定数のクラスです。
  */
 export class ImageFormatType {
-  static WEBP: string = 'image/webp';
-  static JPEG: string = 'image/jpeg';
-  static PNG: string = 'image/png';
+  static WEBP = 'image/webp';
+  static JPEG = 'image/jpeg';
+  static PNG = 'image/png';
 }
 
 /**
@@ -21,7 +21,7 @@ export enum ImageFormatEnum {
  */
 export class ImageFormatSetting {
   public format: string = ImageFormatType.WEBP;
-  public quality: number = 80;
+  public quality = 80;
 
   public getEnum(): ImageFormatEnum {
     let formatEnum: ImageFormatEnum;

@@ -24,7 +24,9 @@ import {ImageFormatSetting} from './data.image-format-type';
 
     <div [hidden]="setting.format == 'image/png'">
       <label>
-        <input type="range" min="0" max="100" step="1" [(ngModel)]="setting.quality" placeholder="value"/>
+        <input type="range" min="0" max="100" step="1" 
+               [(ngModel)]="setting.quality"
+               placeholder="value"/>
         <input type="number"
                min="0" max="100" step="1"
                placeholder="text"

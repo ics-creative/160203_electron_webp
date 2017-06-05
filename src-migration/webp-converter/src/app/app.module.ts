@@ -9,30 +9,36 @@ import {
   MdToolbarModule,
   MdCardModule,
   MdGridListModule,
-  MdIconModule
+  MdIconModule,
+  MdDialogModule
 } from '@angular/material';
 
 import {AppComponent} from './app.component';
 import {PreviewComponent} from './component.preview';
 import {ImageFormatComponent} from './component.image-format';
-import {SaveModal} from './component.modal';
-import {SaveModalMulti} from './component.modal-multi';
+import {SaveModalComponent} from './component.modal';
+import {SaveModalMultiComponent} from './component.modal-multi';
 
 @NgModule({
   declarations: [
     AppComponent,
     PreviewComponent,
     ImageFormatComponent,
-    SaveModal,
-    SaveModalMulti
+    SaveModalComponent,
+    SaveModalMultiComponent
   ],
   imports     : [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MdButtonModule, MdCheckboxModule, MdToolbarModule, MdCardModule, MdGridListModule, MdIconModule
+    MdButtonModule, MdCheckboxModule, MdToolbarModule, MdCardModule, MdGridListModule, MdIconModule, MdDialogModule
   ],
+
+  entryComponents: [
+    SaveModalComponent
+  ],
+
 
   providers: [],
   bootstrap: [AppComponent]

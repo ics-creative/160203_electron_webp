@@ -1,5 +1,7 @@
-import {Component} from '@angular/core';
+import {ChangeDetectorRef, Component} from '@angular/core';
 import {FileData} from './data.file';
+import {MdDialog} from '@angular/material';
+import {SaveModalComponent} from 'app/component.modal';
 
 @Component({
   selector   : 'app-root',
@@ -12,7 +14,8 @@ export class AppComponent {
   private files: FileData[];
   private selectedFile: string;
 
-  constructor() {
+  constructor(private ref: ChangeDetectorRef,
+              private dialog: MdDialog) {
     // -------------------------------
     // ドラッグ&ドロップの動作を阻止する
     // -------------------------------
@@ -51,12 +54,12 @@ export class AppComponent {
 
     console.log('loadFiles');
     console.log(electron);
-    let win = null;
+    const win = null;
     // const win = electron.BrowserWindow.getFocusedWindow();
     // var BrowserWindow = remote.require('browser-window');
     const remote = electron.remote;
 
-
+    console.log(win);
     // console.log(BrowserWindow)
 
     console.log(remote);
@@ -81,9 +84,9 @@ export class AppComponent {
       });
 
     // バインディングのトリガー・・・
-    // setInterval(() => {
-    //   this.files;
-    // }, 1000);
+    setInterval(() => {
+      this.ref.markForCheck();
+    }, 1000);
   }
 
   /**
@@ -100,11 +103,25 @@ export class AppComponent {
   }
 
   private saveFiles(): void {
-    jQuery('#myModalMulti').modal();
+
+
+
+    // jQuery('#myModalMulti').modal();
   }
 
   private openSaveDialog(event): void {
     this.selectedFile = event;
-    jQuery('#myModal').modal();
+    // jQuery('#myModal').modal();
+
+    const dialogRef = this.dialog.open(SaveModalComponent, {
+      height: '400px',
+      width : '600px',
+    });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+    });
+
+    // dialogRef.close('Pizza!');
+
   }
 }

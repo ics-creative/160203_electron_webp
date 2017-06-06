@@ -98,21 +98,15 @@ export class AppComponent {
     for (let i = 0; i < filenames.length; i++) {
       files.push(new FileData(filenames[i]));
     }
-
     this.files = files;
   }
-
   private saveFiles(): void {
-
-
-
     // jQuery('#myModalMulti').modal();
   }
 
   private openSaveDialog(event): void {
     this.selectedFile = event;
     // jQuery('#myModal').modal();
-
     const dialogRef = this.dialog.open(SaveModalComponent, {
       height: '400px',
       width : '600px',
@@ -120,8 +114,6 @@ export class AppComponent {
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`); // Pizza!
     });
-
     // dialogRef.close('Pizza!');
-
   }
 }

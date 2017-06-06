@@ -8,7 +8,6 @@
   </md-toolbar-row>
 
 
-
   <ul class="nav navbar-nav">
     <li class="nav-item">
       <span class="nav-link" (click)="loadFiles()">読み込む</span>
@@ -21,23 +20,49 @@
 
 </md-toolbar>
 
-
 <div class="my-card-holder">
-  <div class="container-fluid">
-    <div class="card-columns">
-      <app-preview *ngFor="let file of files"
-               url="{{file.url}}"
-               (clickConvert)="openSaveDialog($event)">
-      </app-preview>
-    </div>
-  </div>
+  <md-grid-list cols="4">
+    <app-preview *ngFor="let file of files"
+                 url="{{file.url}}"
+                 (clickConvert)="openSaveDialog($event)">
+    </app-preview>
+  </md-grid-list>
 </div>
+
+
+
+<h2 class="mdc-typography--display2">Hello, Material Components!</h2>
+<div class="mdc-textfield" data-mdc-auto-init="MDCTextfield">
+  <input type="text" class="mdc-textfield__input" id="demo-input">
+  <label for="demo-input" class="mdc-textfield__label">Tell us how you feel!</label>
+</div>
+
+
+<footer class="mdl-mega-footer">
+  <div class="mdl-mega-footer__middle-section">
+
+    <div class="mdl-mega-footer__drop-down-section">
+      <input class="mdl-mega-footer__heading-checkbox" type="checkbox" checked>
+      <h1 class="mdl-mega-footer__heading">Features</h1>
+      <ul class="mdl-mega-footer__link-list">
+        <li><a href="#">About</a></li>
+        <li><a href="#">Terms</a></li>
+        <li><a href="#">Partners</a></li>
+        <li><a href="#">Updates</a></li>
+      </ul>
+    </div>
+
+  </div>
+
+</footer>
+
+
 
 <nav class="navbar navbar-fixed-bottom navbar-light bg-faded">
   <a class="navbar-brand" href="https://ics.media/" target="_blank">
-    <small>&copy; ICS INC. All rights reserved.</small>
+    <small>&copy; 2017 ICS INC. All rights reserved.</small>
   </a>
 </nav>
 
-<app-modal-save [selectedFile]="selectedFile"></app-modal-save>
-<app-modal-save-multi [files]="files"></app-modal-save-multi>
+<!--<app-modal-save [selectedFile]="selectedFile"></app-modal-save>-->
+<!--<app-modal-save-multi [files]="files"></app-modal-save-multi>-->

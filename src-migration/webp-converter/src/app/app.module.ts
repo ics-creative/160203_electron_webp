@@ -27,7 +27,7 @@ import {SaveModalMultiComponent} from './component.modal-multi';
     SaveModalComponent,
     SaveModalMultiComponent
   ],
-  imports     : [
+  imports: [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
@@ -39,8 +39,8 @@ import {SaveModalMultiComponent} from './component.modal-multi';
     SaveModalComponent
   ],
 
-
   providers: [],
+
   bootstrap: [AppComponent]
 })
 export class AppModule {

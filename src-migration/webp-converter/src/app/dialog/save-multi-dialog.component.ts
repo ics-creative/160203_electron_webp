@@ -10,7 +10,7 @@ import {Component, Input} from '@angular/core';
 // const fs = require('fs');
 
 @Component({
-  selector: 'app-modal-save-multi',
+  selector: 'app-save-multi-dialog',
   template: `    
     <div class="modal-dialog" role="document">
       <div class="modal-content">
@@ -40,7 +40,7 @@ import {Component, Input} from '@angular/core';
 /**
  * 画像の書き出し設定(複数ファイル)を行うモダールコンポーネントです。
  */
-export class SaveModalMultiComponent {
+export class SaveMultiDialogComponent {
   @Input() private files: FileData[];
   private setting: ImageFormatSetting = new ImageFormatSetting();
   private progress: number;

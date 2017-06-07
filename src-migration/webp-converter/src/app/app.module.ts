@@ -5,38 +5,44 @@ import {HttpModule} from '@angular/http';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {
   MdButtonModule,
-  MdCheckboxModule,
-  MdToolbarModule,
   MdCardModule,
+  MdCheckboxModule,
+  MdDialogModule,
   MdGridListModule,
   MdIconModule,
-  MdDialogModule
+  MdToolbarModule
 } from '@angular/material';
 
 import {MainComponent} from './main/main.component';
 import {PreviewComponent} from './lists/component.preview';
 import {ImageFormatComponent} from './ui/component.image-format';
-import {SaveModalComponent} from './dialog/component.modal';
-import {SaveModalMultiComponent} from './dialog/component.modal-multi';
+import {SaveSignleDialogComponent} from './dialog/save-single-dialog.component';
+import {SaveMultiDialogComponent} from './dialog/save-multi-dialog.component';
 
 @NgModule({
   declarations: [
     MainComponent,
     PreviewComponent,
     ImageFormatComponent,
-    SaveModalComponent,
-    SaveModalMultiComponent
+    SaveSignleDialogComponent,
+    SaveMultiDialogComponent
   ],
-  imports: [
+  imports     : [
     BrowserModule,
     BrowserAnimationsModule,
     FormsModule,
     HttpModule,
-    MdButtonModule, MdCheckboxModule, MdToolbarModule, MdCardModule, MdGridListModule, MdIconModule, MdDialogModule
+    MdButtonModule,
+    MdCheckboxModule,
+    MdToolbarModule,
+    MdCardModule,
+    MdGridListModule,
+    MdIconModule,
+    MdDialogModule
   ],
 
   entryComponents: [
-    SaveModalComponent
+    SaveSignleDialogComponent
   ],
 
   providers: [],

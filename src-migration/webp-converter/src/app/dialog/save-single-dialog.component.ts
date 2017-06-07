@@ -6,7 +6,7 @@ import {FileData, FileSaveData} from '../data/data.file';
 import {Converter} from '../utils/utils.converter';
 
 @Component({
-  selector: 'app-modal-save',
+  selector: 'app-save-single-dialog',
   template: `
     <div class="modal-dialog">
       <h2 md-dialog-title>書き出し形式</h2>
@@ -33,7 +33,7 @@ import {Converter} from '../utils/utils.converter';
 /**
  * 画像の書き出し設定を行うモダールコンポーネントです。
  */
-export class SaveModalComponent {
+export class SaveSignleDialogComponent {
   @Input() private selectedFile: string;
   private setting: ImageFormatSetting = new ImageFormatSetting();
 

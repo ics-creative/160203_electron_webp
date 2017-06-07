@@ -9,7 +9,7 @@ export class FileData {
     if (!url) {
       throw new Error(`url の値 ${url} が不正です。`);
     }
-    
+
     const dirArr   = url.split('/');
     const fileName = dirArr.pop();
     this.fileName  = fileName;

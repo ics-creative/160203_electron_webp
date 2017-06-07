@@ -1,7 +1,7 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
 import {FileData} from '../data/data.file';
 import {MdDialog} from '@angular/material';
-import {SaveModalComponent} from 'app/dialog/component.modal';
+import {SaveSignleDialogComponent} from 'app/dialog/save-single-dialog.component';
 
 @Component({
   selector   : 'app-main',
@@ -96,7 +96,7 @@ export class MainComponent {
   private openSaveDialog(event): void {
     this.selectedFile = event;
     // jQuery('#myModal').modal();
-    const dialogRef   = this.dialog.open(SaveModalComponent, {
+    const dialogRef   = this.dialog.open(SaveSignleDialogComponent, {
       height: '400px',
       width : '600px',
       data  : {selectedFile: event}

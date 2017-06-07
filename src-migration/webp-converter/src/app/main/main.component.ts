@@ -92,8 +92,6 @@ export class MainComponent {
 
   private saveFiles(): void {
     const dialogRef   = this.dialog.open(SaveMultiDialogComponent, {
-      height: '800px',
-      width : '800px',
       data  : {files: this.files}
     });
 

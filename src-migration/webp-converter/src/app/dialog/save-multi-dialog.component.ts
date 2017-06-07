@@ -9,14 +9,13 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
   selector: 'app-save-multi-dialog',
   template: `
     <div>
-
       <h2 md-dialog-title>書き出し形式</h2>
-
       <md-dialog-content>
         <app-setting-image-format [setting]="setting"></app-setting-image-format>
-        <app-setting-image-format [setting]="setting"></app-setting-image-format>
-        <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
       </md-dialog-content>
+
+      <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
+      
       <md-dialog-actions>
         <button md-button
                 md-dialog-close>
@@ -86,10 +85,7 @@ export class SaveMultiDialogComponent {
     converter.onComplete = () => {
       this.progress = 1.0 * 100;
       alert('保存しました。');
-
       this.dialogRef.close();
-
-      // $('#myModalMulti').modal('hide');
     };
     converter.convert(this.setting);
   }

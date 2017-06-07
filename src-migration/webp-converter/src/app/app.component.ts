@@ -53,21 +53,12 @@ export class AppComponent {
   private loadFiles(): void {
 
     console.log('loadFiles');
-    console.log(electron);
-    const win = null;
+    // const win = null;
     // const win = electron.BrowserWindow.getFocusedWindow();
     // var BrowserWindow = remote.require('browser-window');
-    const remote = electron.remote;
-
-    console.log(win);
-    // console.log(BrowserWindow)
-
-    console.log(remote);
-    console.log('remote.dialog');
-    console.log(remote.dialog);
 
     remote.dialog.showOpenDialog(
-      win,
+      null,
       // どんなダイアログを出すかを指定するプロパティ
       {
         properties: ['openFile', 'multiSelections'],
@@ -100,6 +91,7 @@ export class AppComponent {
     }
     this.files = files;
   }
+
   private saveFiles(): void {
     // jQuery('#myModalMulti').modal();
   }
@@ -107,9 +99,10 @@ export class AppComponent {
   private openSaveDialog(event): void {
     this.selectedFile = event;
     // jQuery('#myModal').modal();
-    const dialogRef = this.dialog.open(SaveModalComponent, {
+    const dialogRef   = this.dialog.open(SaveModalComponent, {
       height: '400px',
       width : '600px',
+      data  : {selectedFile: event}
     });
     dialogRef.afterClosed().subscribe(result => {
       console.log(`Dialog result: ${result}`); // Pizza!

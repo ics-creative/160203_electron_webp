@@ -5,13 +5,18 @@ export class FileData {
   public extention: string;
 
   constructor(public url: string) {
-    const dirArr = url.split('/');
+
+    if (!url) {
+      throw new Error(`url の値 ${url} が不正です。`);
+    }
+    
+    const dirArr   = url.split('/');
     const fileName = dirArr.pop();
-    this.fileName = fileName;
+    this.fileName  = fileName;
     this.directory = dirArr.join('/');
 
-    const fileNameArr = fileName.split('.');
-    this.extention = fileNameArr.pop();
+    const fileNameArr             = fileName.split('.');
+    this.extention                = fileNameArr.pop();
     this.fileNameWithoutExtension = fileNameArr.join('.');
   }
 }

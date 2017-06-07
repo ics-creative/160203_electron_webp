@@ -1,19 +1,20 @@
+import {Component, Inject, Input} from '@angular/core';
+import {MD_DIALOG_DATA} from '@angular/material';
+
 import {ImageFormatSetting} from './data.image-format-type';
-import {ImageFormatComponent} from './component.image-format';
-import {Component, Input} from '@angular/core';
+import {FileData, FileSaveData} from './data.file';
+import {Converter} from './utils.converter';
 
 
-/*
-const remote = require('remote');
-const dialog = remote.require('dialog');
-const browserWindow = remote.require('browser-window');
-const fs = require('fs');
-*/
+// const dialog        = remote.require('dialog');
+// const browserWindow = remote.require('browser-window');
+// const fs            = require('fs');
+
 
 @Component({
   selector: 'app-modal-save',
   template: `
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -44,52 +45,71 @@ export class SaveModalComponent {
   @Input() private selectedFile: string;
   private setting: ImageFormatSetting = new ImageFormatSetting();
 
-  constructor() {
-
+  constructor(@Inject(MD_DIALOG_DATA) public data: any) {
+    this.selectedFile = data.selectedFile;
   }
-
-
+  
   private showSaveDialog() {
 
-    /*
-    let win = browserWindow.getFocusedWindow();
-    let file = new FileData(this.selectedFile);
-    let urlNew = file.directory + '/' + file.fileNameWithoutExtension + '.' + this.setting.getExtention();
+    console.log('showSaveDialog');
+    console.log(electron.remote);
+    console.log(electron.remote.BrowserWindow);
+    console.log('showSaveDialog');
+    console.log(electron.remote.dialog.showSaveDialog);
 
-    dialog.showSaveDialog(
-      win,
-      // どんなダイアログを出すかを指定するプロパティ
-      {
-        title: 'ファイルの保存先を選択ください',
-        defaultPath: urlNew
-      },
-      // [ファイル選択]ダイアログが閉じられた後のコールバック関数
-      (filenames: string) => {
-        console.log(filenames);
-        if (filenames && filenames.length > 0) {
-          this.saveFile(filenames);
-        }
-      });
+    const win2    = remote.getCurrentWindow();
+    const options = {
+      title  : 'タイトル',
+      filters: [
+        {name: 'JPEG File', extensions: ['jpg', 'jpeg']},
+        {name: 'All Files', extensions: ['*']}
+      ]
+    };
+    remote.dialog.showSaveDialog(win2, options);
 
+    const win    = electron.remote.BrowserWindow.getFocusedWindow();
+    const file   = new FileData(this.selectedFile);
+    const urlNew = file.directory + '/' + file.fileNameWithoutExtension + '.' + this.setting.getExtention();
+
+
+    //
+    // electron.remote.dialog.showSaveDialog(
+    //   win,
+    //   // どんなダイアログを出すかを指定するプロパティ
+    //   {
+    //     title      : 'ファイルの保存先を選択ください',
+    //     defaultPath: urlNew
+    //   },
+    //   // [ファイル選択]ダイアログが閉じられた後のコールバック関数
+    //   (filenames: string) => {
+    //     console.log('[ファイル選択]ダイアログが閉じられた後のコールバック関数');
+    //
+    //     console.log(filenames);
+    //     if (filenames && filenames.length > 0) {
+    //       this.saveFile(filenames);
+    //     }
+    //   });
+    console.log('showSaveDialog - executed');
   }
 
   private saveFile(saveFileUrl: string): void {
-    /*
+
     console.log(saveFileUrl);
-    let file = new FileSaveData(
+    const file = new FileSaveData(
       new FileData(this.selectedFile),
       new FileData(saveFileUrl));
-    let converter = new Converter([file]);
+
+    const converter = new Converter([file]);
+
     converter.onProgress = (progress: number) => {
       console.log(progress);
     };
     converter.onComplete = () => {
       alert('保存しました。');
 
-      $('#myModal').modal('hide');
+      // $('#myModal').modal('hide');
     };
-
     converter.convert(this.setting);
-    */
+
   }
 }

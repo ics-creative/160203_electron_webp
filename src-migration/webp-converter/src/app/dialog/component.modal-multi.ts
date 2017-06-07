@@ -1,7 +1,7 @@
-import {Converter} from './utils.converter';
-import {FileData, FileSaveData} from './data.file';
-import {ImageFormatSetting} from './data.image-format-type';
-import {ImageFormatComponent} from './component.image-format';
+import {Converter} from '../utils/utils.converter';
+import {FileData, FileSaveData} from '../data/data.file';
+import {ImageFormatSetting} from '../data/data.image-format-type';
+import {ImageFormatComponent} from '../ui/component.image-format';
 import {Component, Input} from '@angular/core';
 
 // const remote = require('remote');

@@ -1,9 +1,9 @@
 import {Component, Inject, Input} from '@angular/core';
 import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 
-import {ImageFormatSetting} from './data.image-format-type';
-import {FileData, FileSaveData} from './data.file';
-import {Converter} from './utils.converter';
+import {ImageFormatSetting} from '../data/data.image-format-type';
+import {FileData, FileSaveData} from '../data/data.file';
+import {Converter} from '../utils/utils.converter';
 
 @Component({
   selector: 'app-modal-save',
@@ -15,16 +15,16 @@ import {Converter} from './utils.converter';
         <app-setting-image-format [setting]="setting"></app-setting-image-format>
       </md-dialog-content>
       <md-dialog-actions>
-        <button md-button 
+        <button md-button
                 md-dialog-close>
           閉じる
         </button>
-        <button md-button 
+        <button md-button
                 (click)="showSaveDialog()"
                 [disabled]="setting.format == null">
           保存する
         </button>
-        
+
       </md-dialog-actions>
     </div>
   `
@@ -43,23 +43,6 @@ export class SaveModalComponent {
   }
 
   private showSaveDialog() {
-
-    console.log('showSaveDialog');
-    console.log(electron.remote);
-    console.log(electron.remote.BrowserWindow);
-    console.log('showSaveDialog');
-    console.log(electron.remote.dialog.showSaveDialog);
-
-    // const win2    = remote.getCurrentWindow();
-    // const options = {
-    //   title  : 'タイトル',
-    //   filters: [
-    //     {name: 'JPEG File', extensions: ['jpg', 'jpeg']},
-    //     {name: 'All Files', extensions: ['*']}
-    //   ]
-    // };
-    // remote.dialog.showSaveDialog(win2, options);
-
     const win    = electron.remote.BrowserWindow.getFocusedWindow();
     const file   = new FileData(this.selectedFile);
     const urlNew = file.directory + '/' + file.fileNameWithoutExtension + '.' + this.setting.getExtention();
@@ -73,21 +56,14 @@ export class SaveModalComponent {
       },
       // [ファイル選択]ダイアログが閉じられた後のコールバック関数
       (filenames: string) => {
-        console.log('[ファイル選択]ダイアログが閉じられた後のコールバック関数');
-
-        console.log(filenames);
         if (filenames && filenames.length > 0) {
           this.saveFile(filenames);
         }
       });
-    console.log('showSaveDialog - executed');
   }
 
   private saveFile(saveFileUrl: string): void {
 
-    console.log('saveFile');
-    console.log(saveFileUrl);
-    console.log(this.selectedFile);
     const file = new FileSaveData(
       new FileData(this.selectedFile),
       new FileData(saveFileUrl));
@@ -101,9 +77,7 @@ export class SaveModalComponent {
       alert('保存しました。');
 
       this.dialogRef.close();
-      // $('#myModal').modal('hide');
     };
     converter.convert(this.setting);
-
   }
 }

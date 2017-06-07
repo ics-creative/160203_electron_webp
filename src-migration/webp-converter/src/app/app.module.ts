@@ -13,15 +13,15 @@ import {
   MdDialogModule
 } from '@angular/material';
 
-import {AppComponent} from './app.component';
-import {PreviewComponent} from './component.preview';
-import {ImageFormatComponent} from './component.image-format';
-import {SaveModalComponent} from './component.modal';
-import {SaveModalMultiComponent} from './component.modal-multi';
+import {MainComponent} from './main/main.component';
+import {PreviewComponent} from './lists/component.preview';
+import {ImageFormatComponent} from './ui/component.image-format';
+import {SaveModalComponent} from './dialog/component.modal';
+import {SaveModalMultiComponent} from './dialog/component.modal-multi';
 
 @NgModule({
   declarations: [
-    AppComponent,
+    MainComponent,
     PreviewComponent,
     ImageFormatComponent,
     SaveModalComponent,
@@ -41,7 +41,7 @@ import {SaveModalMultiComponent} from './component.modal-multi';
 
   providers: [],
 
-  bootstrap: [AppComponent]
+  bootstrap: [MainComponent]
 })
 export class AppModule {
 }

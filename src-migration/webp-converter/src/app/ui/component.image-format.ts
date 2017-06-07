@@ -1,5 +1,5 @@
 import {Component, Input} from '@angular/core';
-import {ImageFormatSetting} from './data.image-format-type';
+import {ImageFormatSetting} from '../data/data.image-format-type';
 @Component({
   selector: 'app-setting-image-format',
   template: `

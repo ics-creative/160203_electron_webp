@@ -1,15 +1,15 @@
 import {ChangeDetectorRef, Component} from '@angular/core';
-import {FileData} from './data.file';
+import {FileData} from '../data/data.file';
 import {MdDialog} from '@angular/material';
-import {SaveModalComponent} from 'app/component.modal';
+import {SaveModalComponent} from 'app/dialog/component.modal';
 
 @Component({
-  selector   : 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls  : ['./app.component.css']
+  selector   : 'app-main',
+  templateUrl: './main.component.html',
+  styleUrls  : ['./main.component.css']
 })
 
-export class AppComponent {
+export class MainComponent {
 
   private files: FileData[];
   private selectedFile: string;
@@ -52,12 +52,9 @@ export class AppComponent {
    */
   private loadFiles(): void {
 
-    console.log('loadFiles');
-    // const win = null;
     // const win = electron.BrowserWindow.getFocusedWindow();
-    // var BrowserWindow = remote.require('browser-window');
 
-    remote.dialog.showOpenDialog(
+    electron.remote.dialog.showOpenDialog(
       null,
       // どんなダイアログを出すかを指定するプロパティ
       {

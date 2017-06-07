@@ -2,7 +2,7 @@ export class FileData {
   public directory: string;
   public fileName: string;
   public fileNameWithoutExtension: string;
-  public extention: string;
+  public extension: string;
 
   constructor(public url: string) {
 
@@ -16,7 +16,7 @@ export class FileData {
     this.directory = dirArr.join('/');
 
     const fileNameArr             = fileName.split('.');
-    this.extention                = fileNameArr.pop();
+    this.extension                = fileNameArr.pop();
     this.fileNameWithoutExtension = fileNameArr.join('.');
   }
 }

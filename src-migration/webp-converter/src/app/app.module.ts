@@ -10,6 +10,7 @@ import {
   MdDialogModule,
   MdGridListModule,
   MdIconModule,
+  MdRadioModule, MdSliderModule,
   MdToolbarModule
 } from '@angular/material';
 
@@ -33,16 +34,19 @@ import {SaveMultiDialogComponent} from './dialog/save-multi-dialog.component';
     FormsModule,
     HttpModule,
     MdButtonModule,
+    MdRadioModule,
     MdCheckboxModule,
     MdToolbarModule,
     MdCardModule,
     MdGridListModule,
     MdIconModule,
+    MdSliderModule,
     MdDialogModule
   ],
 
   entryComponents: [
-    SaveSignleDialogComponent
+    SaveSignleDialogComponent,
+    SaveMultiDialogComponent
   ],
 
   providers: [],

@@ -2,6 +2,7 @@ import {ChangeDetectorRef, Component} from '@angular/core';
 import {FileData} from '../data/data.file';
 import {MdDialog} from '@angular/material';
 import {SaveSignleDialogComponent} from 'app/dialog/save-single-dialog.component';
+import {SaveMultiDialogComponent} from '../dialog/save-multi-dialog.component';
 
 @Component({
   selector   : 'app-main',
@@ -90,20 +91,28 @@ export class MainComponent {
   }
 
   private saveFiles(): void {
-    // jQuery('#myModalMulti').modal();
+    const dialogRef   = this.dialog.open(SaveMultiDialogComponent, {
+      height: '800px',
+      width : '800px',
+      data  : {files: this.files}
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result: ${result}`); // Pizza!
+    });
   }
 
   private openSaveDialog(event): void {
     this.selectedFile = event;
-    // jQuery('#myModal').modal();
+
     const dialogRef   = this.dialog.open(SaveSignleDialogComponent, {
-      height: '400px',
-      width : '600px',
+      height: '800px',
+      width : '800px',
       data  : {selectedFile: event}
     });
+
     dialogRef.afterClosed().subscribe(result => {
-      console.log(`Dialog result: ${result}`); // Pizza!
+      console.log(`Dialog result: ${result}`);
     });
-    // dialogRef.close('Pizza!');
   }
 }

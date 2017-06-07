@@ -5,10 +5,11 @@ import {ImageFormatSetting} from '../data/data.image-format-type';
 import {FileData, FileSaveData} from '../data/data.file';
 import {Converter} from '../utils/utils.converter';
 
+
 @Component({
   selector: 'app-save-single-dialog',
   template: `
-    <div class="modal-dialog">
+    <div>
       <h2 md-dialog-title>書き出し形式</h2>
       <md-dialog-content>
         <img src="{{selectedFile}}" class="img-fluid"/>

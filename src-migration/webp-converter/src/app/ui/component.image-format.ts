@@ -1,37 +1,30 @@
 import {Component, Input} from '@angular/core';
 import {ImageFormatSetting} from '../data/data.image-format-type';
+
 @Component({
   selector: 'app-setting-image-format',
   template: `
-    <div class="radio">
-      <label>
-        <input #radioWebp type="radio" name="exampleRadios" value="image/webp" (change)="setting.format = radioWebp.value">
+
+    <md-radio-group [(ngModel)]="setting.format">
+      <md-radio-button [value]="'image/webp'">
         WebP
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input #radioPng type="radio" name="exampleRadios" value="image/png" (change)="setting.format = radioPng.value">
+      </md-radio-button>
+      <md-radio-button [value]="'image/png'">
         PNG
-      </label>
-    </div>
-    <div class="radio">
-      <label>
-        <input #radioJpeg type="radio" name="exampleRadios" value="image/jpeg" (change)="setting.format = radioJpeg.value">
+      </md-radio-button>
+      <md-radio-button [value]="'image/jpeg'">
         JPEG
-      </label>
-    </div>
+      </md-radio-button>
+    </md-radio-group>
+
 
     <div [hidden]="setting.format == 'image/png'">
-      <label>
-        <input type="range" min="0" max="100" step="1" 
-               [(ngModel)]="setting.quality"
-               placeholder="value"/>
-        <input type="number"
-               min="0" max="100" step="1"
-               placeholder="text"
-               [(ngModel)]="setting.quality"/>
-      </label>
+      <md-slider [(value)]="setting.quality"
+                 [min]="0" 
+                 [max]="100"
+                 [step]="1"
+                 [thumb-label]="true">
+      </md-slider>
     </div>
   `,
 })

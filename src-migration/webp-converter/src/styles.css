@@ -13,3 +13,6 @@ body {
   max-width: 100%;
   height: auto;
 }
+.mdc-grid-tile {
+  --mdc-grid-list-tile-width: 300px;
+}

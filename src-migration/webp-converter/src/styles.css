@@ -8,3 +8,8 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.img-fluid {
+  max-width: 100%;
+  height: auto;
+}

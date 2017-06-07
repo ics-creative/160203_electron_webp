@@ -5,35 +5,26 @@ import {ImageFormatSetting} from './data.image-format-type';
 import {FileData, FileSaveData} from './data.file';
 import {Converter} from './utils.converter';
 
-
-// const dialog        = remote.require('dialog');
-// const browserWindow = remote.require('browser-window');
-// const fs            = require('fs');
-
-
 @Component({
   selector: 'app-modal-save',
   template: `
     <div class="modal-dialog">
-
-
       <h2 md-dialog-title>書き出し形式</h2>
       <md-dialog-content>
-
         <img src="{{selectedFile}}" class="img-fluid"/>
-
         <app-setting-image-format [setting]="setting"></app-setting-image-format>
       </md-dialog-content>
       <md-dialog-actions>
-        <button md-button md-dialog-close>閉じる</button>
-        <!-- Can optionally provide a result for the closing dialog. -->
-
-        <button type="button"
-                class="btn btn-primary"
+        <button md-button 
+                md-dialog-close>
+          閉じる
+        </button>
+        <button md-button 
                 (click)="showSaveDialog()"
                 [disabled]="setting.format == null">
           保存する
         </button>
+        
       </md-dialog-actions>
     </div>
   `

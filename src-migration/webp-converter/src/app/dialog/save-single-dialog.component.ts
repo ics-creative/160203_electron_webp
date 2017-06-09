@@ -26,7 +26,7 @@ import {Converter} from '../utils/utils.converter';
 
     </md-dialog-actions>
   `,
-  styles : [`
+  styles  : [`
     md-dialog-content {
       padding: 24px 24px;
     }
@@ -72,15 +72,8 @@ export class SaveSignleDialogComponent {
       new FileData(saveFileUrl));
 
     const converter = new Converter([file]);
-
-    converter.onProgress = (progress: number) => {
-      console.log(progress);
-    };
-    converter.onComplete = () => {
-      alert('保存しました。');
-
+    converter.convert(this.setting).then(() => {
       this.dialogRef.close();
-    };
-    converter.convert(this.setting);
+    });
   }
 }

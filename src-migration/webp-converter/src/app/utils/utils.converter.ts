@@ -21,7 +21,13 @@ export class Converter {
 
     // 画面更新
     await new Promise(resolve => {
-      setTimeout(resolve, 1000);
+      this.progress = 1.0;
+
+      if (this.onProgress != null) {
+        this.onProgress(this.progress);
+      }
+
+      setTimeout(resolve, 16);
     });
 
     if (this.onComplete != null) {

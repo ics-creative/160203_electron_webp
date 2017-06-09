@@ -6,15 +6,19 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 
 
 @Component({
-  selector : 'app-save-multi-dialog',
-  template : `
+  selector: 'app-save-multi-dialog',
+  template: `
     <div>
       <h2 md-dialog-title>書き出し形式</h2>
       <md-dialog-content>
         <app-setting-image-format [setting]="setting"></app-setting-image-format>
       </md-dialog-content>
 
-      <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
+      <md-progress-bar mode="determinate"
+                       [value]="progress"
+                       [hidden]="progress == 0">
+
+      </md-progress-bar>
 
       <md-dialog-actions>
         <button md-button
@@ -29,7 +33,7 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
       </md-dialog-actions>
     </div>
   `,
-  styles: [`
+  styles  : [`
     md-dialog-content {
       padding: 24px 24px;
     }
@@ -84,14 +88,12 @@ export class SaveMultiDialogComponent {
     const converter = new Converter(taskFiles);
 
     converter.onProgress = (progress: number) => {
-      this.progress = Math.round(progress * 100);
+      this.progress = progress * 100;
     };
-
-    converter.onComplete = () => {
+    converter.convert(this.setting).then(() => {
       this.progress = 1.0 * 100;
       alert('保存しました。');
       this.dialogRef.close();
-    };
-    converter.convert(this.setting);
+    });
   }
 }

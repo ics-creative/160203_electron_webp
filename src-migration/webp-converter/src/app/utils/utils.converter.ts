@@ -9,7 +9,6 @@ export class Converter {
 
   private progress = 0;
   public onProgress: Function;
-  public onComplete: Function;
 
   constructor(private files: FileSaveData[]) {
   }
@@ -27,12 +26,8 @@ export class Converter {
         this.onProgress(this.progress);
       }
 
-      setTimeout(resolve, 16);
+      setTimeout(resolve, 50);
     });
-
-    if (this.onComplete != null) {
-      this.onComplete();
-    }
   }
 
   _createFileSavePromise(file: FileSaveData, setting: ImageFormatSetting, index: number) {
@@ -51,22 +46,23 @@ export class Converter {
 
         let data: string;
         let dataUrl: string;
-        let extention: string;
+        let extension: string;
+        
         switch (setting.getEnum()) {
           case ImageFormatEnum.WEBP:
             data      = canvas.toDataURL(setting.format, setting.quality / 100);
             dataUrl   = data.replace(/^data:image\/webp;base64,/, '');
-            extention = 'webp';
+            extension = 'webp';
             break;
           case ImageFormatEnum.JPEG:
             data      = canvas.toDataURL(setting.format, setting.quality / 100);
             dataUrl   = data.replace(/^data:image\/jpeg;base64,/, '');
-            extention = 'jpeg';
+            extension = 'jpeg';
             break;
           case ImageFormatEnum.PNG:
             data      = canvas.toDataURL(setting.format);
             dataUrl   = data.replace(/^data:image\/png;base64,/, '');
-            extention = 'png';
+            extension = 'png';
             break;
         }
 
@@ -77,7 +73,7 @@ export class Converter {
           }
 
           // カウントの更新
-          const count   = index;
+          const count   = index + 1;
           this.progress = count / this.files.length;
 
           if (this.onProgress != null) {
@@ -87,7 +83,8 @@ export class Converter {
           resolve();
         });
       };
-      image.src    = fileInput.url;
+
+      image.src = fileInput.url;
     });
   }
 

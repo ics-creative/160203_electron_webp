@@ -12,22 +12,24 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
       <h2 md-dialog-title>書き出し形式</h2>
       <md-dialog-content>
         <app-setting-image-format [setting]="setting"></app-setting-image-format>
+
+        <div [hidden]="hidden">
+          <p>書き出し中</p>
+          <md-progress-bar mode="determinate"
+                           [value]="progress">
+          </md-progress-bar>
+        </div>
       </md-dialog-content>
-
-      <md-progress-bar mode="determinate"
-                       [value]="progress"
-                       [hidden]="progress == 0">
-
-      </md-progress-bar>
 
       <md-dialog-actions>
         <button md-button
-                md-dialog-close>
+                md-dialog-close
+                [disabled]="!hidden">
           閉じる
         </button>
         <button md-button
                 (click)="showSaveDialog()"
-                [disabled]="setting.format == null">
+                [disabled]="setting.format == null || !hidden">
           保存先を選択する
         </button>
       </md-dialog-actions>
@@ -47,6 +49,7 @@ export class SaveMultiDialogComponent {
   @Input() private files: FileData[];
   private setting: ImageFormatSetting = new ImageFormatSetting();
   private progress: number;
+  private hidden                      = true;
 
   constructor(@Inject(MD_DIALOG_DATA) public data: any,
               private dialogRef: MdDialogRef<any>) {
@@ -74,6 +77,10 @@ export class SaveMultiDialogComponent {
 
   private saveFile(dir: string): void {
     this.progress = 0;
+    this.hidden   = false;
+
+    // UI Lock
+    document.querySelector('html').style.pointerEvents = 'none';
 
     const taskFiles: FileSaveData[] = [];
     for (let i = 0; i < this.files.length; i++) {
@@ -92,8 +99,17 @@ export class SaveMultiDialogComponent {
     };
     converter.convert(this.setting).then(() => {
       this.progress = 1.0 * 100;
-      alert('保存しました。');
-      this.dialogRef.close();
+
+      setTimeout(() => {
+        this.hidden = true;
+
+        alert('保存しました。');
+        this.dialogRef.close();
+
+        // UI Lock
+        document.querySelector('html').style.pointerEvents = null;
+      }, 500);
+
     });
   }
 }

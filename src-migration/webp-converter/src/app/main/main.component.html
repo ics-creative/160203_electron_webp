@@ -1,0 +1,29 @@
+<header class="mdc-toolbar mdc-toolbar--fixed">
+  <div class="mdc-toolbar__row">
+    <section class="mdc-toolbar__section mdc-toolbar__section--align-start">
+      <button md-button
+              (click)="loadFiles()">
+        読み込む
+      </button>
+
+      <button md-button
+              [hidden]="!files"
+              (click)="saveFiles()">
+        まとめて変換する
+      </button>
+    </section>
+  </div>
+</header>
+
+<main>
+  <div class="mdc-toolbar-fixed-adjust"></div>
+
+  <div class="mdc-layout-grid my-grid">
+    <app-preview *ngFor="let file of files"
+                 url="{{file.url}}"
+                 class="mdc-layout-grid__cell"
+                 (clickConvert)="openSaveDialog($event)">
+    </app-preview>
+  </div>
+
+</main>

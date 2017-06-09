@@ -18,15 +18,28 @@ import {ImageFormatSetting} from '../data/data.image-format-type';
     </md-radio-group>
 
 
-    <div [hidden]="setting.format == 'image/png'">
+    <div class="my-slider">
+      <p>画質</p>
       <md-slider [(value)]="setting.quality"
-                 [min]="0" 
-                 [max]="100"
-                 [step]="1"
-                 [thumb-label]="true">
+                 min="0"
+                 max="100"
+                 step="1"
+                 thumb-label="true"s
+                 [disabled]="setting.format == 'image/png'">
       </md-slider>
     </div>
   `,
+  styles  : [`
+    .my-slider {
+      margin-top: 20px;
+    }
+
+    md-slider {
+      width: 250px;
+    }
+
+  `
+  ]
 })
 
 /**

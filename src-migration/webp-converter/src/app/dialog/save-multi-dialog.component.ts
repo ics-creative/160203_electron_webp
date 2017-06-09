@@ -6,8 +6,8 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
 
 
 @Component({
-  selector: 'app-save-multi-dialog',
-  template: `
+  selector : 'app-save-multi-dialog',
+  template : `
     <div>
       <h2 md-dialog-title>書き出し形式</h2>
       <md-dialog-content>
@@ -15,7 +15,7 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
       </md-dialog-content>
 
       <progress class="progress" value="{{progress}}" max="100">{{progress}}%</progress>
-      
+
       <md-dialog-actions>
         <button md-button
                 md-dialog-close>
@@ -28,7 +28,12 @@ import {MD_DIALOG_DATA, MdDialogRef} from '@angular/material';
         </button>
       </md-dialog-actions>
     </div>
-  `
+  `,
+  styles: [`
+    md-dialog-content {
+      padding: 24px 24px;
+    }
+  `]
 })
 
 /**

@@ -91,8 +91,8 @@ export class MainComponent {
   }
 
   private saveFiles(): void {
-    const dialogRef   = this.dialog.open(SaveMultiDialogComponent, {
-      data  : {files: this.files}
+    const dialogRef = this.dialog.open(SaveMultiDialogComponent, {
+      data: {files: this.files}
     });
 
     dialogRef.afterClosed().subscribe(result => {
@@ -103,10 +103,8 @@ export class MainComponent {
   private openSaveDialog(event): void {
     this.selectedFile = event;
 
-    const dialogRef   = this.dialog.open(SaveSignleDialogComponent, {
-      height: '800px',
-      width : '800px',
-      data  : {selectedFile: event}
+    const dialogRef = this.dialog.open(SaveSignleDialogComponent, {
+      data: {selectedFile: event}
     });
 
     dialogRef.afterClosed().subscribe(result => {

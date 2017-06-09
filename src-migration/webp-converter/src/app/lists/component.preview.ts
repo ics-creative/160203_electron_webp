@@ -6,7 +6,7 @@ import {AfterViewInit, Component, EventEmitter, Input, Output} from '@angular/co
     <md-card>
       <img md-card-image
            data-src="{{url}}"
-           alt="Card image cap"/>
+           alt=""/>
       
       <md-card-content>
         {{getFileName()}}

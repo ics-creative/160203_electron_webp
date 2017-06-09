@@ -9,26 +9,28 @@ import {Converter} from '../utils/utils.converter';
 @Component({
   selector: 'app-save-single-dialog',
   template: `
-    <div>
-      <h2 md-dialog-title>書き出し形式</h2>
-      <md-dialog-content>
-        <img src="{{selectedFile}}" class="img-fluid"/>
-        <app-setting-image-format [setting]="setting"></app-setting-image-format>
-      </md-dialog-content>
-      <md-dialog-actions>
-        <button md-button
-                md-dialog-close>
-          閉じる
-        </button>
-        <button md-button
-                (click)="showSaveDialog()"
-                [disabled]="setting.format == null">
-          保存する
-        </button>
+    <h2 md-dialog-title>書き出し形式</h2>
+    <md-dialog-content>
+      <app-setting-image-format [setting]="setting"></app-setting-image-format>
+    </md-dialog-content>
+    <md-dialog-actions>
+      <button md-button
+              md-dialog-close>
+        閉じる
+      </button>
+      <button md-button
+              (click)="showSaveDialog()"
+              [disabled]="setting.format == null">
+        保存する
+      </button>
 
-      </md-dialog-actions>
-    </div>
-  `
+    </md-dialog-actions>
+  `,
+  styles : [`
+    md-dialog-content {
+      padding: 24px 24px;
+    }
+  `]
 })
 
 /**

@@ -3,12 +3,7 @@
   "version": "0.0.0",
   "license": "MIT",
   "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "ng build",
-    "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e",
     "mybuild-electron-watch": "ng build -w && watch 'cp dist/* electron/' dist/*",
     "mybuild-copy": "cp dist/* electron/",
     "mybuild-test": "ng build && cp dist/* electron/",
@@ -36,24 +31,13 @@
     "@angular/cli": "^1.1.0",
     "@angular/compiler-cli": "^4.1.3",
     "@types/electron": "^1.4.34",
-    "@types/jasmine": "2.5.38",
-    "@types/jquery": "^2.0.41",
     "@types/node": "~6.0.60",
     "codelyzer": "~2.0.0",
     "electron-prebuilt": "^1.4.13",
-    "jasmine-core": "~2.5.2",
-    "jasmine-spec-reporter": "~3.2.0",
-    "karma": "~1.4.1",
-    "karma-chrome-launcher": "~2.0.0",
-    "karma-cli": "~1.0.1",
-    "karma-coverage-istanbul-reporter": "^0.2.0",
-    "karma-jasmine": "~1.1.0",
-    "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.0",
     "ts-node": "~2.0.0",
     "tslint": "~4.5.0",
     "typescript": "^2.3.4",
-    "watch": "^1.0.2",
-    "your-app": "file:electron"
+    "watch": "^1.0.2"
   }
 }

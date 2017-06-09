@@ -4,7 +4,8 @@
   "license": "MIT",
   "scripts": {
     "lint": "ng lint",
-    "mybuild-electron-watch": "ng build -w && watch 'cp dist/* electron/' dist/*",
+    "mybuild-electron-watch-1": "ng build -w",
+    "mybuild-electron-watch-2": "watch 'cp dist/* electron/' dist/",
     "mybuild-copy": "cp dist/* electron/",
     "mybuild-test": "ng build && cp dist/* electron/",
     "mybuild-preview": "electron electron/"
